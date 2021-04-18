@@ -29,3 +29,5 @@ public:
 		completed = false;
 	}
 };
+
+extern cDijkstra gDijkstra;
