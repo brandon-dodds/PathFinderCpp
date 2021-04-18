@@ -19,7 +19,7 @@ void cDijkstra::Build(cBotBase& bot)
 
 		for (int i = 0; i < GRIDHEIGHT; i++) {
 			for (int j = 0; j < GRIDWIDTH; j++) {
-				if (cost[i][j] < cost[lowestI][lowestJ]) {
+				if (cost[i][j] < cost[lowestI][lowestJ] && closed[i][j] == false && gLevel.isBlocked(i,j)) {
 					lowestI = i;
 					lowestJ = j;
 				}
