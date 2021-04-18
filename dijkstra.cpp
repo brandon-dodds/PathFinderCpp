@@ -12,7 +12,7 @@ void cDijkstra::Build(cBotBase& bot)
 		}
 	}
 	cost[bot.PositionX()][bot.PositionY()] = 0;
-	while (closed[bot.PositionX()][bot.PositionY()] == false)
+	while (closed[gTarget.PositionX()][gTarget.PositionY()] == false)
 	{
 		int lowestI, lowestJ;
 		lowestI = lowestJ = 0;
