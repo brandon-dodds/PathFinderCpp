@@ -4,9 +4,11 @@ void cDijkstra::Build(cBotBase& bot)
 {
 	for (int i = 0; i < GRIDHEIGHT; i++) {
 		for (int j = 0; j < GRIDWIDTH; j++) {
-			closed[i][j], inPath[i][j] = false;
+			closed[i][j] = false;
+			inPath[i][j] = false;
 			cost[i][j] = std::numeric_limits<float>::max();
-			linkX[i][j], linkY[i][j] = -1;
+			linkX[i][j] = -1;
+			linkY[i][j] = -1;
 		}
 	}
 	cost[bot.PositionX()][bot.PositionY()] = 0;
@@ -26,64 +28,64 @@ void cDijkstra::Build(cBotBase& bot)
 		closed[lowestI][lowestJ] = true;
 
 		if (gLevel.isValid(lowestI + 1, lowestJ)
-			&& closed[lowestI + 1][lowestJ] != true
-			&& cost[lowestI + 1][lowestJ] < cost[lowestI][lowestJ] + 1) {
+			&& closed[lowestI + 1][lowestJ] == false
+			&& cost[lowestI + 1][lowestJ] > cost[lowestI][lowestJ] + 1) {
 			cost[lowestI + 1][lowestJ] = cost[lowestI][lowestJ] + 1;
 			linkX[lowestI + 1][lowestJ] = lowestI;
 			linkY[lowestI + 1][lowestJ] = lowestJ;
 		}
 
 		if (gLevel.isValid(lowestI - 1, lowestJ)
-			&& closed[lowestI - 1][lowestJ] != true
-			&& cost[lowestI - 1][lowestJ] < cost[lowestI][lowestJ] + 1) {
+			&& closed[lowestI - 1][lowestJ] == false
+			&& cost[lowestI - 1][lowestJ] > cost[lowestI][lowestJ] + 1) {
 			cost[lowestI - 1][lowestJ] = cost[lowestI][lowestJ] + 1;
 			linkX[lowestI - 1][lowestJ] = lowestI;
 			linkY[lowestI - 1][lowestJ] = lowestJ;
 		}
 
 		if (gLevel.isValid(lowestI, lowestJ + 1)
-			&& closed[lowestI][lowestJ + 1] != true
-			&& cost[lowestI][lowestJ + 1] < cost[lowestI][lowestJ] + 1) {
+			&& closed[lowestI][lowestJ + 1] == false
+			&& cost[lowestI][lowestJ + 1] > cost[lowestI][lowestJ] + 1) {
 			cost[lowestI][lowestJ + 1] = cost[lowestI][lowestJ] + 1;
 			linkX[lowestI][lowestJ + 1] = lowestI;
 			linkY[lowestI][lowestJ + 1] = lowestJ;
 		}
 
 		if (gLevel.isValid(lowestI + 1, lowestJ)
-			&& closed[lowestI][lowestJ - 1] != true
-			&& cost[lowestI][lowestJ - 1] < cost[lowestI][lowestJ] + 1.4f) {
+			&& closed[lowestI][lowestJ - 1] == false
+			&& cost[lowestI][lowestJ - 1] > cost[lowestI][lowestJ] + 1.4f) {
 			cost[lowestI][lowestJ - 1] = cost[lowestI][lowestJ] + 1.4f;
 			linkX[lowestI][lowestJ - 1] = lowestI;
 			linkY[lowestI][lowestJ - 1] = lowestJ;
 		}
 
 		if (gLevel.isValid(lowestI + 1, lowestJ + 1)
-			&& closed[lowestI + 1][lowestJ + 1] != true
-			&& cost[lowestI + 1][lowestJ + 1] < cost[lowestI][lowestJ] + 1) {
+			&& closed[lowestI + 1][lowestJ + 1] == false
+			&& cost[lowestI + 1][lowestJ + 1] > cost[lowestI][lowestJ] + 1) {
 			cost[lowestI + 1][lowestJ + 1] = cost[lowestI][lowestJ] + 1.4f;
 			linkX[lowestI + 1][lowestJ + 1] = lowestI;
 			linkY[lowestI + 1][lowestJ + 1] = lowestJ;
 		}
 
 		if (gLevel.isValid(lowestI - 1, lowestJ - 1)
-			&& closed[lowestI - 1][lowestJ - 1] != true
-			&& cost[lowestI - 1][lowestJ - 1] < cost[lowestI][lowestJ] + 1) {
+			&& closed[lowestI - 1][lowestJ - 1] == false
+			&& cost[lowestI - 1][lowestJ - 1] > cost[lowestI][lowestJ] + 1) {
 			cost[lowestI - 1][lowestJ - 1] = cost[lowestI][lowestJ] + 1.4f;
 			linkX[lowestI - 1][lowestJ - 1] = lowestI;
 			linkY[lowestI - 1][lowestJ - 1] = lowestJ;
 		}
 
 		if (gLevel.isValid(lowestI - 1, lowestJ + 1)
-			&& closed[lowestI - 1][lowestJ + 1] != true
-			&& cost[lowestI - 1][lowestJ + 1] < cost[lowestI][lowestJ] + 1) {
+			&& closed[lowestI - 1][lowestJ + 1] == false
+			&& cost[lowestI - 1][lowestJ + 1] > cost[lowestI][lowestJ] + 1) {
 			cost[lowestI - 1][lowestJ + 1] = cost[lowestI][lowestJ] + 1.4f;
 			linkX[lowestI - 1][lowestJ + 1] = lowestI;
 			linkY[lowestI - 1][lowestJ + 1] = lowestJ;
 		}
 
 		if (gLevel.isValid(lowestI + 1, lowestJ - 1)
-			&& closed[lowestI + 1][lowestJ - 1] != true
-			&& cost[lowestI + 1][lowestJ - 1] < cost[lowestI][lowestJ] + 1) {
+			&& closed[lowestI + 1][lowestJ - 1] == false
+			&& cost[lowestI + 1][lowestJ - 1] > cost[lowestI][lowestJ] + 1) {
 			cost[lowestI + 1][lowestJ - 1] = cost[lowestI][lowestJ] + 1.4f;
 			linkX[lowestI + 1][lowestJ - 1] = lowestI;
 			linkY[lowestI + 1][lowestJ - 1] = lowestJ;
