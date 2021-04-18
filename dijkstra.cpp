@@ -19,7 +19,7 @@ void cDijkstra::Build(cBotBase& bot)
 
 		for (int i = 0; i < GRIDHEIGHT; i++) {
 			for (int j = 0; j < GRIDWIDTH; j++) {
-				if (cost[i][j] < cost[lowestI][lowestJ] && closed[i][j] == false && gLevel.isBlocked(i,j)) {
+				if (cost[i][j] < cost[lowestI][lowestJ] && closed[i][j] == false && gLevel.isValid(i,j)) {
 					lowestI = i;
 					lowestJ = j;
 				}
@@ -51,7 +51,7 @@ void cDijkstra::Build(cBotBase& bot)
 			linkY[lowestI][lowestJ + 1] = lowestJ;
 		}
 
-		if (gLevel.isValid(lowestI + 1, lowestJ)
+		if (gLevel.isValid(lowestI, lowestJ - 1)
 			&& closed[lowestI][lowestJ - 1] == false
 			&& cost[lowestI][lowestJ - 1] > cost[lowestI][lowestJ] + 1) {
 			cost[lowestI][lowestJ - 1] = cost[lowestI][lowestJ] + 1;
