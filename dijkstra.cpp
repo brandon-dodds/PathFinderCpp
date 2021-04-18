@@ -53,15 +53,15 @@ void cDijkstra::Build(cBotBase& bot)
 
 		if (gLevel.isValid(lowestI + 1, lowestJ)
 			&& closed[lowestI][lowestJ - 1] == false
-			&& cost[lowestI][lowestJ - 1] > cost[lowestI][lowestJ] + 1.4f) {
-			cost[lowestI][lowestJ - 1] = cost[lowestI][lowestJ] + 1.4f;
+			&& cost[lowestI][lowestJ - 1] > cost[lowestI][lowestJ] + 1) {
+			cost[lowestI][lowestJ - 1] = cost[lowestI][lowestJ] + 1;
 			linkX[lowestI][lowestJ - 1] = lowestI;
 			linkY[lowestI][lowestJ - 1] = lowestJ;
 		}
 
 		if (gLevel.isValid(lowestI + 1, lowestJ + 1)
 			&& closed[lowestI + 1][lowestJ + 1] == false
-			&& cost[lowestI + 1][lowestJ + 1] > cost[lowestI][lowestJ] + 1) {
+			&& cost[lowestI + 1][lowestJ + 1] > cost[lowestI][lowestJ] + 1.4f) {
 			cost[lowestI + 1][lowestJ + 1] = cost[lowestI][lowestJ] + 1.4f;
 			linkX[lowestI + 1][lowestJ + 1] = lowestI;
 			linkY[lowestI + 1][lowestJ + 1] = lowestJ;
@@ -69,7 +69,7 @@ void cDijkstra::Build(cBotBase& bot)
 
 		if (gLevel.isValid(lowestI - 1, lowestJ - 1)
 			&& closed[lowestI - 1][lowestJ - 1] == false
-			&& cost[lowestI - 1][lowestJ - 1] > cost[lowestI][lowestJ] + 1) {
+			&& cost[lowestI - 1][lowestJ - 1] > cost[lowestI][lowestJ] + 1.4f) {
 			cost[lowestI - 1][lowestJ - 1] = cost[lowestI][lowestJ] + 1.4f;
 			linkX[lowestI - 1][lowestJ - 1] = lowestI;
 			linkY[lowestI - 1][lowestJ - 1] = lowestJ;
@@ -77,7 +77,7 @@ void cDijkstra::Build(cBotBase& bot)
 
 		if (gLevel.isValid(lowestI - 1, lowestJ + 1)
 			&& closed[lowestI - 1][lowestJ + 1] == false
-			&& cost[lowestI - 1][lowestJ + 1] > cost[lowestI][lowestJ] + 1) {
+			&& cost[lowestI - 1][lowestJ + 1] > cost[lowestI][lowestJ] + 1.4f) {
 			cost[lowestI - 1][lowestJ + 1] = cost[lowestI][lowestJ] + 1.4f;
 			linkX[lowestI - 1][lowestJ + 1] = lowestI;
 			linkY[lowestI - 1][lowestJ + 1] = lowestJ;
@@ -85,7 +85,7 @@ void cDijkstra::Build(cBotBase& bot)
 
 		if (gLevel.isValid(lowestI + 1, lowestJ - 1)
 			&& closed[lowestI + 1][lowestJ - 1] == false
-			&& cost[lowestI + 1][lowestJ - 1] > cost[lowestI][lowestJ] + 1) {
+			&& cost[lowestI + 1][lowestJ - 1] > cost[lowestI][lowestJ] + 1.4f) {
 			cost[lowestI + 1][lowestJ - 1] = cost[lowestI][lowestJ] + 1.4f;
 			linkX[lowestI + 1][lowestJ - 1] = lowestI;
 			linkY[lowestI + 1][lowestJ - 1] = lowestJ;
