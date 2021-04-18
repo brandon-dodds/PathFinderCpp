@@ -14,14 +14,16 @@ void cDijkstra::Build(cBotBase& bot)
 	cost[bot.PositionX()][bot.PositionY()] = 0;
 	while (closed[gTarget.PositionX()][gTarget.PositionY()] == false)
 	{
+		float minCost = std::numeric_limits<float>::max();
 		int lowestI, lowestJ;
 		lowestI = lowestJ = 0;
 
 		for (int i = 0; i < GRIDHEIGHT; i++) {
 			for (int j = 0; j < GRIDWIDTH; j++) {
-				if (cost[i][j] < cost[lowestI][lowestJ] && closed[i][j] == false && gLevel.isValid(i,j)) {
+				if (cost[i][j] < minCost && closed[i][j] == false && gLevel.isValid(i,j)) {
 					lowestI = i;
 					lowestJ = j;
+					minCost = cost[i][j];
 				}
 			}
 		}
