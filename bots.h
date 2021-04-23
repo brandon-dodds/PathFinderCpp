@@ -30,4 +30,10 @@ public:
 	}
 };
 
+class cAStar : public cDijkstra
+{
+public:
+	virtual void Build(cBotBase& bot);
+};
 extern cDijkstra gDijkstra;
+extern cAStar gAStar;
