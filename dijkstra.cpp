@@ -131,11 +131,12 @@ void cAStar::Build(cBotBase& bot)
 
 		for (int i = 0; i < GRIDHEIGHT; i++) {
 			for (int j = 0; j < GRIDWIDTH; j++) {
-				float heuristic = sqrt(pow(gTarget.PositionX() - i, 2) + pow(gTarget.PositionY() - j, 2));
-				if (cost[i][j] + heuristic < minCost && closed[i][j] == false && gLevel.isValid(i, j)) {
+				float euclideanDistance = sqrt(pow(fabs(gTarget.PositionX()) - i, 2) + pow(fabs(gTarget.PositionY() - j), 2));
+				// float manhattanDistance = fabs(gTarget.PositionX()-i) + fabs(gTarget.PositionY() -j);
+				if (cost[i][j] + euclideanDistance < minCost && closed[i][j] == false && gLevel.isValid(i, j)) {
 					lowestI = i;
 					lowestJ = j;
-					minCost = cost[i][j] + heuristic;
+					minCost = cost[i][j] + euclideanDistance;
 				}
 			}
 		}
