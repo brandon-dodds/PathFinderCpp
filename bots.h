@@ -7,7 +7,7 @@
 //======================================================================================
 
 #include "botbase.h"
-
+#include <vector>
 class cBotRandom : public cBotBase
 {
 	virtual void ChooseNextGridPosition();
@@ -33,6 +33,7 @@ public:
 class cAStar : public cDijkstra
 {
 public:
+	std::vector<std::pair<int, int>> coords;
 	virtual void Build(cBotBase& bot);
 };
 extern cDijkstra gDijkstra;

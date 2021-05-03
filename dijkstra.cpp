@@ -1,5 +1,6 @@
 #include "bots.h"
 #include <limits>
+#include <utility>
 void cDijkstra::Build(cBotBase& bot)
 {
 	for (int i = 0; i < GRIDHEIGHT; i++) {
@@ -212,6 +213,7 @@ void cAStar::Build(cBotBase& bot)
 	int nextClosedY = gTarget.PositionY();
 	while (!done) {
 		inPath[nextClosedX][nextClosedY] = true;
+		coords.push_back(std::make_pair(nextClosedX, nextClosedY));
 		int tmpX = nextClosedX;
 		int tmpY = nextClosedY;
 		nextClosedX = linkX[tmpX][tmpY];
