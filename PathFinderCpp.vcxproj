@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="botAStar.cpp" />
     <ClCompile Include="botRandom.cpp" />
     <ClCompile Include="dijkstra.cpp" />
     <ClCompile Include="dynamic.cpp" />

@@ -13,6 +13,12 @@ class cBotRandom : public cBotBase
 	virtual void ChooseNextGridPosition();
 };
 
+class cAStarBot : public cBotBase
+{
+public:
+	virtual void ChooseNextGridPosition();
+};
+
 class cDijkstra
 {
 public:
@@ -36,5 +42,6 @@ public:
 	std::vector<std::pair<int, int>> coords;
 	virtual void Build(cBotBase& bot);
 };
+
 extern cDijkstra gDijkstra;
 extern cAStar gAStar;
